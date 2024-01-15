@@ -7,7 +7,7 @@
 }
 
 body {
-  background-color: #F4C531;
+  background-color: #e7c553;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -25,8 +25,14 @@ h1 {
   font-weight:500;
 }
 
+.congrat {
+  font-weight: bold;
+  text-decoration: underline;
+  text-align: center;
+}
+
 .button {
-  margin-top:20px;
+  margin-top:10px;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
@@ -48,6 +54,16 @@ h1 {
   height: 45px;
 }
 
+.stat {
+  margin-top: 10px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.stat span {
+  font-weight: 400;
+}
+
 .right {
   text-align: end;
   margin-bottom: 10px;
@@ -56,6 +72,14 @@ h1 {
 
 .right span {
   font-weight: 400;
+}
+
+.scoreboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 30px;
 }
 
 .board {
@@ -79,7 +103,7 @@ h1 {
   width: 75px;
   height: 75px;
   border: 3px solid black;
-  border-radius: 4px;
+  border-radius: 10px;
   transition: transform 0.5s;
   transform-style: preserve-3d;
   backface-visibility: hidden;
@@ -101,17 +125,41 @@ h1 {
   transform: scale(-1, 1);
 }
 
-.btn-div {
+.bot {
+  margin-top: 10px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
+.bot p {
+  font-size: 14px;
+}
+
+
 button {
-  border-radius: 3px;
+  border-radius: 7px;
   border: none;
   color: white;
   background-color: black;
   margin-top: 20px;
   padding: 15px 20px;
   font-size: 13px;
+  cursor: pointer;
+}
+
+article {
+  padding: 15px 30px;
+  background-color:#F4C531;
+  border-radius: 10px;
+  margin-top: 20px;
+  filter: drop-shadow(0 0 0.75rem rgb(255, 244, 142));
+}
+
+.podium {
+  display: flex;
+}
+
+article:nth-child(1){
+  margin-right: 20px;
 }
