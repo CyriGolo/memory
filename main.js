@@ -190,41 +190,58 @@ function start() {
     });
     localStorage.setItem("gameData", JSON.stringify(existingGameData));
     console.log(existingGameData);
-    app.innerHTML = `
-    <h1 class="congrat">Congratulation !</h1>
-        <div class="stat">
-            <p>Moves : <span class="moveScore">${move}</span></p>
-            <p>Timer : <span class="timerScore">${min < 10 ? "0" + min : min}:${sec < 10 ? "0" + sec : sec}</span></p>
-        </div>
-        <div class="scoreboard">
-            <h2>Your best score :</h2>
-            <article>
-                <iconify-icon icon="ph:trophy-bold" width="40" height="40"></iconify-icon>
-                <h3>1st</h3>
-                <h4>Timer : ${existingGameData[0].timer[0] < 10 ? "0" + existingGameData[0].timer[0] : existingGameData[0].timer[0]}:${existingGameData[0].timer[1] < 10 ? "0" + existingGameData[0].timer[1] : existingGameData[0].timer[1]}</h4>
-                <h4>Moves : ${existingGameData[0].score}</h4>
-                <h5>${existingGameData[0].date}</h5>
-            </article>
-            <div class="podium">
-                <article>
-                    <iconify-icon icon="fluent-mdl2:medal" width="30" height="30"></iconify-icon>
-                    <h3>2nd</h3>
-                    <h4>Timer : ${existingGameData[1].timer[0] < 10 ? "0" + existingGameData[1].timer[0] : existingGameData[1].timer[0]}:${existingGameData[1].timer[1] < 10 ? "0" + existingGameData[1].timer[1] : existingGameData[1].timer[1]}</h4>
-                    <h4>Moves : ${existingGameData[1].score}</h4>
-                    <h5>${existingGameData[1].date}</h5>
-                </article>
-                <article>
-                    <iconify-icon icon="ph:medal" width="30" height="30"></iconify-icon>
-                    <h3>3rd</h3>
-                    <h4>Timer : ${existingGameData[2].timer[0] < 10 ? "0" + existingGameData[2].timer[0] : existingGameData[2].timer[0]}:${existingGameData[2].timer[1] < 10 ? "0" + existingGameData[2].timer[1] : existingGameData[2].timer[1]}</h4>
-                    <h4>Moves : ${existingGameData[2].score}</h4>
-                    <h5>${existingGameData[2].date}</h5>
-                </article>
-            </div>
-        </div>
-        <div class="bot">
-            <button class="newGame">Return to home ?</button>
-        </div>`
+    if(existingGameData.length > 3) {
+      app.innerHTML = `
+      <h1 class="congrat">Congratulation !</h1>
+          <div class="stat">
+              <p>Moves : <span class="moveScore">${move}</span></p>
+              <p>Timer : <span class="timerScore">${min < 10 ? "0" + min : min}:${sec < 10 ? "0" + sec : sec}</span></p>
+          </div>
+          <div class="scoreboard">
+              <h2>Your best score :</h2>
+              <article>
+                  <iconify-icon icon="ph:trophy-bold" width="40" height="40"></iconify-icon>
+                  <h3>1st</h3>
+                  <h4>Timer : ${existingGameData[0].timer[0] < 10 ? "0" + existingGameData[0].timer[0] : existingGameData[0].timer[0]}:${existingGameData[0].timer[1] < 10 ? "0" + existingGameData[0].timer[1] : existingGameData[0].timer[1]}</h4>
+                  <h4>Moves : ${existingGameData[0].score}</h4>
+                  <h5>${existingGameData[0].date}</h5>
+              </article>
+              <div class="podium">
+                  <article>
+                      <iconify-icon icon="fluent-mdl2:medal" width="30" height="30"></iconify-icon>
+                      <h3>2nd</h3>
+                      <h4>Timer : ${existingGameData[1].timer[0] < 10 ? "0" + existingGameData[1].timer[0] : existingGameData[1].timer[0]}:${existingGameData[1].timer[1] < 10 ? "0" + existingGameData[1].timer[1] : existingGameData[1].timer[1]}</h4>
+                      <h4>Moves : ${existingGameData[1].score}</h4>
+                      <h5>${existingGameData[1].date}</h5>
+                  </article>
+                  <article>
+                      <iconify-icon icon="ph:medal" width="30" height="30"></iconify-icon>
+                      <h3>3rd</h3>
+                      <h4>Timer : ${existingGameData[2].timer[0] < 10 ? "0" + existingGameData[2].timer[0] : existingGameData[2].timer[0]}:${existingGameData[2].timer[1] < 10 ? "0" + existingGameData[2].timer[1] : existingGameData[2].timer[1]}</h4>
+                      <h4>Moves : ${existingGameData[2].score}</h4>
+                      <h5>${existingGameData[2].date}</h5>
+                  </article>
+              </div>
+          </div>
+          <div class="bot">
+              <button class="newGame">Return to home ?</button>
+          </div>`
+    } else {
+      app.innerHTML = `
+      <h1 class="congrat">Congratulation !</h1>
+          <div class="stat">
+              <p>Moves : <span class="moveScore">${move}</span></p>
+              <p>Timer : <span class="timerScore">${min < 10 ? "0" + min : min}:${sec < 10 ? "0" + sec : sec}</span></p>
+          </div>
+          <div class="scoreboard">
+              <h2>Your best score : </h2>
+                <article>Missing ${3 - existingGameData.length} games to display</article
+              </div>
+          </div>
+          <div class="bot">
+              <button class="newGame">Return to home ?</button>
+          </div>`
+    }
     document.querySelector('.newGame').addEventListener('click', ()=>{
       home()
     })
