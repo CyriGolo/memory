@@ -99,7 +99,7 @@ function start() {
     let secondes = 0;
 
     const seconde = () => {
-        return secondes % 60 >= 59 ? 0 : secondes % 60;
+        return secondes % 60;
     }
 
     const minutes = () => {
@@ -111,7 +111,7 @@ function start() {
         document.querySelector('.timer').textContent = `: ${minutes() < 10 ? "0" + minutes() : minutes()}:${seconde() < 10 ? "0" + seconde() : seconde()}`;
     };
 
-    const interval = setInterval(timer, 1 * 100);
+    const interval = setInterval(timer, 1 * 1000);
 
     for(let i = 0; i < cards.length; i++) {
         cards[i].addEventListener('click', () => {
